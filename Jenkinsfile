@@ -67,7 +67,7 @@ pipeline {
     post {
         success {
             emailext(
-                to: 'sprasannas05@gmail.com',
+                to: 'abhishek.prasanna@iiitb.ac.in',
                 subject: "Build SUCCESS - ${env.JOB_NAME}",
                 body: "Docker image built and pushed successfully."
             )
@@ -75,7 +75,7 @@ pipeline {
 
         failure {
             emailext(
-                to: 'sprasannas05@gmail.com',
+                to: 'abhishek.prasanna@iiitb.ac.in',
                 subject: "Build FAILED - ${env.JOB_NAME}",
                 body: "Build failed. Check Jenkins console."
             )
