@@ -67,7 +67,7 @@ pipeline {
 
     post {
         success {
-            mail to: 'abhishek.prasanna@iiitb.ac.in',
+            mail to: 'prasanna.abhishek11@gmail.com',
                  subject: "Build SUCCESS - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: """
 Build completed successfully.
