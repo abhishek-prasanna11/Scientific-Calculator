@@ -56,6 +56,12 @@ pipeline {
                 }
             }
         }
+
+	stage('Deploy (Pull Image)') {
+		steps {
+			sh 'ansible-playbook ansible/deploy.yml'
+		}
+	}
     }
 
     post {

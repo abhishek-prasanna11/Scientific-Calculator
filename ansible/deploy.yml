@@ -1,0 +1,12 @@
+---
+- name: Pull latest scientific calculator image
+  hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: Pull image from Docker Hub
+      community.docker.docker_image:
+        name: abhishekprasanna1109/scientific-calculator
+        tag: latest
+        source: pull
