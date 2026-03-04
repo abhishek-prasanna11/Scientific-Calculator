@@ -52,33 +52,47 @@ pipeline {
                     sh '''
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
                     docker push $DOCKER_IMAGE
+                    docker logout
                     '''
                 }
             }
         }
 
-	stage('Deploy (Pull Image)') {
-		steps {
-			sh 'ansible-playbook ansible/deploy.yml'
-		}
-	}
+        stage('Deploy (Pull Image)') {
+            steps {
+                sh 'ansible-playbook ansible/deploy.yml'
+            }
+        }
     }
 
     post {
         success {
-            emailext(
-                to: 'abhishek.prasanna@iiitb.ac.in',
-                subject: "Build SUCCESS - ${env.JOB_NAME}",
-                body: "Docker image built and pushed successfully."
-            )
+            mail to: 'abhishek.prasanna@iiitb.ac.in',
+                 subject: "Build SUCCESS - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: """
+Build completed successfully.
+
+Job: ${env.JOB_NAME}
+Build Number: ${env.BUILD_NUMBER}
+Docker Image: ${DOCKER_IMAGE}
+
+Console Output:
+${env.BUILD_URL}
+"""
         }
 
         failure {
-            emailext(
-                to: 'abhishek.prasanna@iiitb.ac.in',
-                subject: "Build FAILED - ${env.JOB_NAME}",
-                body: "Build failed. Check Jenkins console."
-            )
+            mail to: 'abhishek.prasanna@iiitb.ac.in',
+                 subject: "Build FAILED - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: """
+Build failed.
+
+Job: ${env.JOB_NAME}
+Build Number: ${env.BUILD_NUMBER}
+
+Check console output:
+${env.BUILD_URL}
+"""
         }
     }
-}
+}:
