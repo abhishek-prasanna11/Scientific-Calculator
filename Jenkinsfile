@@ -6,6 +6,10 @@ pipeline {
         jdk 'JDK17'
     }
 
+    environment {
+        DOCKER_IMAGE = "abhishekprasanna1109/scientific-calculator:latest"
+    }
+
     stages {
 
         stage('Checkout') {
@@ -31,18 +35,44 @@ pipeline {
                 sh 'mvn package'
             }
         }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t $DOCKER_IMAGE .'
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-token',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh '''
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    docker push $DOCKER_IMAGE
+                    '''
+                }
+            }
+        }
     }
 
     post {
         success {
-            mail to: 'abhishek.prasanna@iiitb.ac.in',
-                 subject: "Build SUCCESS - ${env.JOB_NAME}",
-                 body: "Build completed successfully."
+            emailext(
+                to: 'abhishek.prasanna@iiitb.ac.in',
+                subject: "Build SUCCESS - ${env.JOB_NAME}",
+                body: "Docker image built and pushed successfully."
+            )
         }
+
         failure {
-            mail to: 'abhishek.prasanna@iiitb.ac.in',
-                 subject: "Build FAILED - ${env.JOB_NAME}",
-                 body: "Build failed. Check Jenkins console output."
+            emailext(
+                to: 'abhishek.prasanna@iiitb.ac.in',
+                subject: "Build FAILED - ${env.JOB_NAME}",
+                body: "Build failed. Check Jenkins console."
+            )
         }
     }
 }
