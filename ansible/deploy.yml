@@ -1,12 +1,27 @@
 ---
-- name: Pull latest scientific calculator image
-  hosts: localhost
+- name: Deploy Scientific Calculator Container
+  hosts: servers
   connection: local
+  become: yes
 
   tasks:
 
-    - name: Pull image from Docker Hub
+    - name: Pull latest Docker image from Docker Hub
       community.docker.docker_image:
         name: abhishekprasanna1109/scientific-calculator
         tag: latest
         source: pull
+
+    - name: Stop existing container if running
+      community.docker.docker_container:
+        name: scientific-calculator
+        state: absent
+
+    - name: Run container from latest image
+      community.docker.docker_container:
+        name: scientific-calculator
+        image: abhishekprasanna1109/scientific-calculator:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "8080:8080"

@@ -60,7 +60,7 @@ pipeline {
 
         stage('Deploy (Pull Image)') {
             steps {
-                sh 'ansible-playbook ansible/deploy.yml'
+                sh 'ansible-playbook -i ansible/inventory.ini ansible/deploy.yml'
             }
         }
     }

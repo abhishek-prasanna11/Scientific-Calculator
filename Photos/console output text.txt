@@ -1,0 +1,491 @@
+Started by user Abhishek Prasanna
+Obtained Jenkinsfile from git https://github.com/abhishek-prasanna11/Scientific-Calculator.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/abhishek/.jenkins/workspace/Scientific-Calculator
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > /usr/bin/git rev-parse --resolve-git-dir /Users/abhishek/.jenkins/workspace/Scientific-Calculator/.git # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url https://github.com/abhishek-prasanna11/Scientific-Calculator.git # timeout=10
+Fetching upstream changes from https://github.com/abhishek-prasanna11/Scientific-Calculator.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.50.1 (Apple Git-155)'
+ > /usr/bin/git fetch --tags --force --progress -- https://github.com/abhishek-prasanna11/Scientific-Calculator.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision c1bc68d7c7adf6d288b72211f253157c9817005c (refs/remotes/origin/main)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f c1bc68d7c7adf6d288b72211f253157c9817005c # timeout=10
+Commit message: "Refactor README for improved formatting and clarity"
+ > /usr/bin/git rev-list --no-walk c1bc68d7c7adf6d288b72211f253157c9817005c # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > /usr/bin/git rev-parse --resolve-git-dir /Users/abhishek/.jenkins/workspace/Scientific-Calculator/.git # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url https://github.com/abhishek-prasanna11/Scientific-Calculator.git # timeout=10
+Fetching upstream changes from https://github.com/abhishek-prasanna11/Scientific-Calculator.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.50.1 (Apple Git-155)'
+ > /usr/bin/git fetch --tags --force --progress -- https://github.com/abhishek-prasanna11/Scientific-Calculator.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision c1bc68d7c7adf6d288b72211f253157c9817005c (refs/remotes/origin/main)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f c1bc68d7c7adf6d288b72211f253157c9817005c # timeout=10
+Commit message: "Refactor README for improved formatting and clarity"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Compile)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn clean compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.abhishek:Scientific-Calculator >-----------------
+[INFO] Building Scientific-Calculator 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ Scientific-Calculator ---
+[INFO] Deleting /Users/abhishek/.jenkins/workspace/Scientific-Calculator/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ Scientific-Calculator ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/abhishek/.jenkins/workspace/Scientific-Calculator/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ Scientific-Calculator ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 2 source files with javac [debug target 17] to target/classes
+[WARNING] system modules path not set in conjunction with -source 17
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.628 s
+[INFO] Finished at: 2026-03-05T14:50:44+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.abhishek:Scientific-Calculator >-----------------
+[INFO] Building Scientific-Calculator 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ Scientific-Calculator ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/abhishek/.jenkins/workspace/Scientific-Calculator/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ Scientific-Calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ Scientific-Calculator ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/abhishek/.jenkins/workspace/Scientific-Calculator/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ Scientific-Calculator ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug target 17] to target/test-classes
+[WARNING] system modules path not set in conjunction with -source 17
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ Scientific-Calculator ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.abhishek.CalculatorTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 s -- in org.abhishek.CalculatorTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.269 s
+[INFO] Finished at: 2026-03-05T14:50:47+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Package)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< org.abhishek:Scientific-Calculator >-----------------
+[INFO] Building Scientific-Calculator 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ Scientific-Calculator ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/abhishek/.jenkins/workspace/Scientific-Calculator/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ Scientific-Calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ Scientific-Calculator ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/abhishek/.jenkins/workspace/Scientific-Calculator/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ Scientific-Calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ Scientific-Calculator ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.abhishek.CalculatorTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in org.abhishek.CalculatorTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ Scientific-Calculator ---
+[INFO] Building jar: /Users/abhishek/.jenkins/workspace/Scientific-Calculator/target/Scientific-Calculator-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.970 s
+[INFO] Finished at: 2026-03-05T14:50:49+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker build -t abhishekprasanna1109/scientific-calculator:latest .
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 174B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:17-jdk
+#2 DONE 1.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 4.91kB done
+#4 DONE 0.0s
+
+#5 [1/3] FROM docker.io/library/eclipse-temurin:17-jdk@sha256:b624cb9175b71aaeb654dd9def666035332d5abf70318537c1a46e61564dbecd
+#5 resolve docker.io/library/eclipse-temurin:17-jdk@sha256:b624cb9175b71aaeb654dd9def666035332d5abf70318537c1a46e61564dbecd done
+#5 DONE 0.0s
+
+#6 [2/3] WORKDIR /app
+#6 CACHED
+
+#7 [3/3] COPY target/Scientific-Calculator-1.0-SNAPSHOT.jar app.jar
+#7 DONE 0.0s
+
+#8 exporting to image
+#8 exporting layers 0.0s done
+#8 exporting manifest sha256:eae336e7e0e597be527e1fd39428752b3765f5fe9bad8ab6a35049b7ed663822 done
+#8 exporting config sha256:7823ba75a47acebb46545b6e0afdacceb9a7841abea4625107cc278d4e73d67f done
+#8 exporting attestation manifest sha256:d96347d1cd509574ae3ddf0f4d511196510f68b1800e90a21d0e606c3e9127af 0.0s done
+#8 exporting manifest list sha256:317fdf3a939cf95e4383f970edb6fb48110468b3c1b74ff5200f3fc01878bb59
+#8 exporting manifest list sha256:317fdf3a939cf95e4383f970edb6fb48110468b3c1b74ff5200f3fc01878bb59 done
+#8 naming to docker.io/abhishekprasanna1109/scientific-calculator:latest done
+#8 unpacking to docker.io/abhishekprasanna1109/scientific-calculator:latest 0.0s done
+#8 DONE 0.1s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Push)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_PASS
+[Pipeline] {
+[Pipeline] sh
++ echo ****
++ docker login -u abhishekprasanna1109 --password-stdin
+Login Succeeded
++ docker push abhishekprasanna1109/scientific-calculator:latest
+The push refers to repository [docker.io/abhishekprasanna1109/scientific-calculator]
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+cb2133ea2c24: Waiting
+03eac264d5df: Layer already exists
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+66a4bbbfab88: Waiting
+cb2133ea2c24: Layer already exists
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+d1777e35d879: Waiting
+d9731669689e: Waiting
+66a4bbbfab88: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Waiting
+d9731669689e: Layer already exists
+66a4bbbfab88: Layer already exists
+a6943f8ec356: Waiting
+d35621976c26: Waiting
+55071af2ac50: Layer already exists
+d1777e35d879: Layer already exists
+a6943f8ec356: Waiting
+a6943f8ec356: Waiting
+d35621976c26: Pushed
+a6943f8ec356: Pushed
+latest: digest: sha256:317fdf3a939cf95e4383f970edb6fb48110468b3c1b74ff5200f3fc01878bb59 size: 856
++ docker logout
+Removing login credentials for https://index.docker.io/v1/
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy (Pull Image))
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ ansible-playbook ansible/deploy.yml
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [Pull latest scientific calculator image] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Pull image from Docker Hub] **********************************************
+ok: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] mail
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
