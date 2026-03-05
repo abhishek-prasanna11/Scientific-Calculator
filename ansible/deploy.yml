@@ -21,6 +21,5 @@
         name: scientific-calculator
         image: abhishekprasanna1109/scientific-calculator:latest
         state: started
-        restart_policy: always
-        ports:
-          - "8080:8080"
+        tty: true
+        interactive: true
