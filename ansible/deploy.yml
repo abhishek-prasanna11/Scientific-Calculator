@@ -22,4 +22,4 @@
         image: abhishekprasanna1109/scientific-calculator:latest
         state: started
         tty: true
-        interactive: true
+        stdin_open: true
