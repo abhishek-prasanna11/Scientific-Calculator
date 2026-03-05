@@ -11,9 +11,8 @@
         source: pull
 
     - name: Stop existing container if running
-      docker_container:
-        name: scientific-calculator
-        state: absent
+      command: docker rm -f scientific-calculator
+      ignore_errors: yes
 
     - name: Run container from latest image
       docker_container:
